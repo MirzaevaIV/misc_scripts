@@ -3,8 +3,8 @@ import re
 
 def getTempStudies(data):
     RepetList = pd.DataFrame(columns=data.columns)
-    for i in range(data.shape[0]):
-        pattern = re.sub(r'[0-9]', '', data.iloc[i]['NAME'])
+    while data.shape[0] > 0:
+        pattern = re.sub(r'[0-9]', '', data['NAME'].iloc[0])
         print(pattern)
         sub_data = data[data['NAME'].str.contains(pattern)]
         data = data[data['NAME'].str.contains(pattern)==False]
